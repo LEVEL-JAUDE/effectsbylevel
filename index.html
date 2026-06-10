@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Effects by LEVEL — Tiny Tablets. Big Effects.</title>
-  <meta name="description" content="Precision-dosed, fast-acting hemp tablets from LEVEL. Choose your effect — Relief, Sleep, Relax, Calm — and feel it, consistently. Shop the LEVEL line." />
+  <meta name="description" content="Precision-dosed, fast-acting tablets from LEVEL. Choose your effect — Relief, Sleep, Relax, Calm — and feel it, consistently. Shop the LEVEL line." />
 
   <!-- Social sharing -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Effects by LEVEL — Tiny Tablets. Big Effects." />
-  <meta property="og:description" content="Precision-dosed hemp tablets. Relief · Sleep · Relax · Calm. Consistent effects, every time." />
+  <meta property="og:description" content="Precision-dosed tablets. Relief · Sleep · Relax · Calm. Consistent effects, every time." />
   <meta property="og:url" content="https://effectsbylevel.com" />
   <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVELHemp_CalmProtab_tablets.png?width=1200" />
   <meta name="theme-color" content="#ffffff" />
@@ -26,15 +26,15 @@
     :root {
       /* Pulled from the live levelexperience.shop theme (Horizon) */
       --bg: #ffffff;
-      --ink: #282828;          /* headings */
+      --ink: #282828;
       --ink-strong: #111111;
-      --muted: #6b6b6b;        /* body / foreground */
+      --muted: #6b6b6b;
       --line: rgba(0,0,0,0.12);
       --btn: #000000;
       --btn-hover: #333333;
-      --radius-btn: 12px;      /* theme button radius */
+      --radius-btn: 12px;
       --radius-card: 28px;
-      /* LEVEL Pantone accents — used sparingly */
+      /* LEVEL Pantone accents */
       --teal: #2ed9c3; --amber: #ffb548; --lightblue: #19bde8;
       --green: #81e77a; --coral: #f68d6c; --periwinkle: #8a84d6; --blue: #00a0df;
     }
@@ -43,14 +43,9 @@
     html { -webkit-text-size-adjust: 100%; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: var(--ink);
-      background: var(--bg);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
+      color: var(--ink); background: var(--bg); line-height: 1.6;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+      min-height: 100svh; display: flex; flex-direction: column;
     }
     a { color: inherit; }
 
@@ -65,69 +60,58 @@
 
     /* ---------- Hero ---------- */
     .hero {
-      flex: 1;
-      width: min(1120px, 92vw);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.02fr 0.98fr;
-      align-items: center;
-      gap: clamp(24px, 5vw, 72px);
-      padding: clamp(32px, 6vh, 80px) 0;
+      width: min(1120px, 92vw); margin: 0 auto;
+      display: grid; grid-template-columns: 1.02fr 0.98fr;
+      align-items: center; gap: clamp(24px, 5vw, 72px);
+      padding: clamp(28px, 5vh, 64px) 0 clamp(28px, 4vh, 48px);
     }
     .copy { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
     @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
     .promo {
       display: inline-flex; align-items: center; gap: 8px;
-      font-size: 13px; font-weight: 600; letter-spacing: 0.01em;
-      color: var(--ink); text-decoration: none;
-      padding: 7px 14px; border-radius: 999px;
-      border: 1px solid var(--line); background: #fafafa;
-      margin-bottom: 22px; transition: background .2s;
+      font-size: 13px; font-weight: 600; color: var(--ink); text-decoration: none;
+      padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line);
+      background: #fafafa; margin-bottom: 20px; transition: background .2s;
     }
     .promo:hover { background: #f1f1f1; }
     .promo .dot { width: 7px; height: 7px; border-radius: 50%;
       background: linear-gradient(120deg, var(--teal), var(--blue)); }
 
     h1 {
-      font-weight: 700;
-      font-size: clamp(40px, 6.4vw, 68px);
-      line-height: 1.02;
-      letter-spacing: -0.025em;
-      color: var(--ink-strong);
-      margin-bottom: 20px;
+      font-weight: 700; font-size: clamp(40px, 6.4vw, 68px); line-height: 1.02;
+      letter-spacing: -0.025em; color: var(--ink-strong); margin-bottom: 18px;
     }
-    h1 .accent {
-      position: relative; white-space: nowrap;
-    }
+    h1 .accent { position: relative; white-space: nowrap; }
     h1 .accent::after {
       content: ""; position: absolute; left: 0; right: 0; bottom: 0.06em; height: 0.14em;
       background: linear-gradient(90deg, var(--teal), var(--lightblue) 35%, var(--periwinkle) 70%, var(--amber));
       border-radius: 4px; opacity: 0.9;
     }
 
-    .subhead {
-      font-size: clamp(16px, 2.2vw, 19px);
-      color: var(--muted); font-weight: 400;
-      max-width: 42ch; margin-bottom: 28px;
-    }
+    .subhead { font-size: clamp(16px, 2.2vw, 19px); color: var(--muted);
+      max-width: 42ch; margin-bottom: 22px; }
 
     /* Effect tags */
-    .effects { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 32px; }
+    .effects { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 22px; }
     .tag {
       display: inline-flex; align-items: center; gap: 8px;
       font-size: 14px; font-weight: 500; color: var(--ink);
-      padding: 8px 15px; border-radius: 999px; border: 1px solid var(--line);
-      background: #fff;
+      padding: 8px 15px; border-radius: 999px; border: 1px solid var(--line); background: #fff;
     }
     .tag .swatch { width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
 
+    /* Rating / social proof */
+    .rating { display: flex; align-items: center; gap: 10px; margin-bottom: 26px; flex-wrap: wrap; }
+    .stars { color: var(--amber); font-size: 17px; letter-spacing: 1px; }
+    .rating .score { font-weight: 700; color: var(--ink-strong); font-size: 14px; }
+    .rating .count { font-size: 13px; color: var(--muted); }
+
     /* Buttons */
-    .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; }
+    .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 9px;
-      font-size: 16px; font-weight: 600; letter-spacing: -0.01em;
-      text-decoration: none; cursor: pointer;
+      font-size: 16px; font-weight: 600; letter-spacing: -0.01em; text-decoration: none; cursor: pointer;
       padding: 15px 30px; border-radius: var(--radius-btn);
       transition: transform .2s cubic-bezier(.2,.7,.2,1), background .2s, box-shadow .2s, color .2s;
     }
@@ -139,44 +123,79 @@
     .btn-secondary { background: transparent; color: var(--ink-strong); border: 1px solid var(--ink-strong); }
     .btn-secondary:hover { background: #fafafa; transform: translateY(-2px); }
 
-    .trust { font-size: 13px; color: var(--muted); letter-spacing: 0.01em; }
+    .trust { font-size: 13px; color: var(--muted); }
     .trust b { color: var(--ink); font-weight: 600; }
 
-    /* ---------- Product panel ---------- */
+    /* ---------- Product crossfade panel ---------- */
     .product {
-      position: relative;
+      position: relative; aspect-ratio: 1 / 1;
+      background: #fff; border: 1px solid rgba(0,0,0,0.06);
       border-radius: var(--radius-card);
-      background:
-        radial-gradient(120% 100% at 50% 0%, #f3f7f9 0%, #eef1ea 55%, #e9edf3 100%);
-      aspect-ratio: 1 / 1;
+      box-shadow: 0 30px 60px -34px rgba(0,0,0,0.30);
       display: grid; place-items: center;
-      overflow: hidden;
       animation: rise .9s cubic-bezier(.2,.7,.2,1) .08s both;
     }
-    /* faint multi-color brand glow behind the tablets */
-    .product::before {
-      content: ""; position: absolute; width: 70%; height: 70%; border-radius: 50%;
-      background: conic-gradient(from 0deg, var(--teal), var(--lightblue), var(--periwinkle), var(--amber), var(--coral), var(--teal));
-      filter: blur(60px); opacity: 0.22;
+    /* color aura behind the card — crossfades blue → teal → amber with the product */
+    .aura { position: absolute; inset: -14%; z-index: -1; filter: blur(54px); border-radius: 44px; }
+    .g { position: absolute; inset: 0; opacity: 0; animation: cf 13.5s infinite; }
+    .g1 { background: radial-gradient(circle at 50% 55%, var(--lightblue), transparent 68%); animation-delay: 0s; }
+    .g2 { background: radial-gradient(circle at 50% 55%, var(--teal), transparent 68%);      animation-delay: 4.5s; }
+    .g3 { background: radial-gradient(circle at 50% 55%, var(--amber), transparent 68%);     animation-delay: 9s; }
+
+    .stage { position: relative; width: 86%; aspect-ratio: 1 / 1; }
+    .slide {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
+      opacity: 0; animation: cf 13.5s infinite;
     }
-    .product img {
-      position: relative; z-index: 1;
-      width: 82%; height: auto;
-      filter: drop-shadow(0 24px 40px rgba(0,0,0,0.18));
-      animation: float 6s ease-in-out infinite;
+    .slide.s1 { animation-delay: 0s; }
+    .slide.s2 { animation-delay: 4.5s; }
+    .slide.s3 { animation-delay: 9s; }
+
+    /* visible windows overlap (0→38%) so neighbours cross-fade instead of blanking */
+    @keyframes cf {
+      0%    { opacity: 0; transform: scale(0.99); }
+      5%    { opacity: 1; transform: scale(1); }
+      33%   { opacity: 1; transform: scale(1); }
+      38%   { opacity: 0; transform: scale(0.99); }
+      100%  { opacity: 0; transform: scale(0.99); }
     }
-    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-    .product .badge {
-      position: absolute; z-index: 2; bottom: 18px; left: 18px;
+
+    .badges { position: absolute; bottom: 18px; left: 18px; height: 32px; }
+    .badge {
+      position: absolute; bottom: 0; left: 0; white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 8px;
       font-size: 12px; font-weight: 600; color: var(--ink);
-      background: rgba(255,255,255,0.85); backdrop-filter: blur(6px);
+      background: rgba(255,255,255,0.9); backdrop-filter: blur(6px);
       padding: 7px 13px; border-radius: 999px; border: 1px solid var(--line);
+      opacity: 0; animation: cf 13.5s infinite;
     }
+    .badge .d { width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+    .badge.b1 { animation-delay: 0s; }
+    .badge.b2 { animation-delay: 4.5s; }
+    .badge.b3 { animation-delay: 9s; }
+
+    /* ---------- Press strip ---------- */
+    .press {
+      border-top: 1px solid var(--line); background: #fafafa;
+      padding: 24px 0 26px; text-align: center;
+    }
+    .press-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 16px;
+    }
+    .press-logos {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+      gap: clamp(22px, 5vw, 52px); width: min(900px, 90vw); margin: 0 auto;
+    }
+    .press-logos img {
+      height: 26px; width: auto; opacity: 0.55;
+      filter: grayscale(1); transition: opacity .2s, filter .2s;
+    }
+    .press-logos img:hover { opacity: 0.95; filter: grayscale(0); }
 
     /* ---------- Footer ---------- */
     footer {
-      border-top: 1px solid var(--line);
-      padding: 22px 0; text-align: center;
+      border-top: 1px solid var(--line); padding: 20px 0; text-align: center;
       font-size: 12.5px; color: var(--muted); letter-spacing: 0.02em;
     }
     footer a { color: var(--ink); text-decoration: none; font-weight: 500; }
@@ -185,14 +204,16 @@
 
     /* ---------- Responsive ---------- */
     @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; text-align: center; padding: 28px 0 40px; gap: 32px; }
-      .promo, .ctas, .effects { justify-content: center; }
+      .hero { grid-template-columns: 1fr; text-align: center; padding: 24px 0 34px; gap: 30px; }
+      .promo, .ctas, .effects, .rating { justify-content: center; }
       .subhead { margin-left: auto; margin-right: auto; }
-      .product { order: -1; max-width: 380px; margin: 0 auto; width: 100%; }
+      .product { order: -1; max-width: 360px; margin: 0 auto; width: 100%; }
       .ctas .btn { flex: 1 1 auto; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .copy, .product, .product img { animation: none !important; }
+      .copy, .product { animation: none !important; }
+      .slide, .badge, .g { animation: none !important; opacity: 0; }
+      .slide.s1, .badge.b1, .g1 { opacity: 1; }
     }
   </style>
 </head>
@@ -211,13 +232,19 @@
 
       <h1>Tiny Tablets.<br /><span class="accent">Big Effects.</span></h1>
 
-      <p class="subhead">Precision-dosed, fast-acting hemp tablets. Choose your effect and feel it — clean, consistent, every single time.</p>
+      <p class="subhead">Precision-dosed, fast-acting tablets. Choose your effect and feel it — clean, consistent, every single time.</p>
 
       <div class="effects" aria-label="Effects">
-        <span class="tag"><span class="swatch" style="--c: var(--coral)"></span>Relief</span>
-        <span class="tag"><span class="swatch" style="--c: var(--periwinkle)"></span>Sleep</span>
-        <span class="tag"><span class="swatch" style="--c: var(--teal)"></span>Relax</span>
-        <span class="tag"><span class="swatch" style="--c: var(--lightblue)"></span>Calm</span>
+        <span class="tag"><span class="swatch" style="--c: var(--lightblue)"></span>Sleep</span>
+        <span class="tag"><span class="swatch" style="--c: var(--teal)"></span>Relief</span>
+        <span class="tag"><span class="swatch" style="--c: var(--amber)"></span>Relax</span>
+        <span class="tag"><span class="swatch" style="--c: var(--periwinkle)"></span>Calm</span>
+      </div>
+
+      <div class="rating" aria-label="Customer rating">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <span class="score">4.8/5</span>
+        <span class="count">· hundreds of verified reviews</span>
       </div>
 
       <div class="ctas">
@@ -233,15 +260,33 @@
     </div>
 
     <div class="product">
-      <img src="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVELHemp_CalmProtab_tablets.png?width=1000"
-           alt="LEVEL Calm Protab hemp tablets" loading="eager" />
-      <span class="badge">Tablingual™ · Calm</span>
+      <div class="aura" aria-hidden="true"><div class="g g1"></div><div class="g g2"></div><div class="g g3"></div></div>
+      <div class="stage">
+        <img class="slide s1" src="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVEL_Hemp_Sleep_Protab_tablets_1200x1200_2e1d8598-a030-4887-8aa7-cbe9f25dd021.jpg?width=900"  alt="LEVEL Sleep tablets"  loading="eager" />
+        <img class="slide s2" src="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVEL_Hemp_Relief_Protab_tablets_1200x1200_ebbb8190-93ef-4c05-bd0d-72fa3cacd3e8.jpg?width=900" alt="LEVEL Relief tablets" loading="eager" />
+        <img class="slide s3" src="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVEL_Hemp_Relax_Protab_tablets_1200x1200_6847df8b-69ac-46a2-ba71-dbd26ed6ee00.jpg?width=900"  alt="LEVEL Relax tablets"  loading="eager" />
+      </div>
+      <div class="badges" aria-hidden="true">
+        <span class="badge b1"><span class="d" style="--c: var(--lightblue)"></span>Protab™ · Sleep</span>
+        <span class="badge b2"><span class="d" style="--c: var(--teal)"></span>Protab™ · Relief</span>
+        <span class="badge b3"><span class="d" style="--c: var(--amber)"></span>Protab™ · Relax</span>
+      </div>
     </div>
   </main>
 
+  <section class="press" aria-label="As seen in">
+    <p class="press-label">As seen in</p>
+    <div class="press-logos">
+      <img src="https://levelexperience.shop/cdn/shop/files/1.png?height=80" alt="PBS" loading="lazy" />
+      <img src="https://levelexperience.shop/cdn/shop/files/2.png?height=80" alt="Wellness Magazine" loading="lazy" />
+      <img src="https://levelexperience.shop/cdn/shop/files/3_0c49c5fa-cfdd-419e-8e59-7f8c24428d2c.png?height=80" alt="Yahoo Finance" loading="lazy" />
+      <img src="https://levelexperience.shop/cdn/shop/files/4.png?height=80" alt="SFGATE" loading="lazy" />
+    </div>
+  </section>
+
   <footer>
     &copy; <span id="yr">2026</span> LEVEL&trade;
-    <span class="sep">·</span> Hemp-derived wellness
+    <span class="sep">·</span> Plant-powered wellness
     <span class="sep">·</span> Must be 21+
     <span class="sep">·</span>
     <a href="https://levelexperience.shop/?utm_source=effectsbylevel&utm_medium=footer">levelexperience.shop</a>

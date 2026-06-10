@@ -3,10 +3,10 @@
 Landing page for **[effectsbylevel.com](https://effectsbylevel.com)** — a single-page funnel splash that drives visitors to the LEVEL Shopify store ([levelexperience.shop](https://levelexperience.shop)).
 
 ## What it is
-A self-contained, on-brand splash page (`index.html`, no build step) with an animated brand-color aurora, an equalizer "levels" mark, the four effect categories (Sleep · Calm · Focus · Energy), and a primary **Shop LEVEL** CTA. The CTA and footer links are UTM-tagged (`utm_source=effectsbylevel`) so the funnel is trackable in Shopify analytics.
+A self-contained, on-brand landing page (`index.html`, no build step) styled to match the live LEVEL store (Horizon theme): white background, Inter, near-black type, black 12px-radius buttons. It uses the real LEVEL logo and product photography, a **"Tiny Tablets. Big Effects."** hero, a Sleep → Relief → Relax crossfading product card (with a glow that matches each label color), the four effects (Sleep · Relief · Relax · Calm), a 4.8★ rating line, an **As seen in** press strip (PBS, Wellness, Yahoo Finance, SFGATE), and **Shop now** / **Take the Quiz** CTAs. All store links are UTM-tagged (`utm_source=effectsbylevel`) so the funnel is trackable in Shopify analytics.
 
 ## Hosting
-Served via **GitHub Pages** from the `main` branch (root). The custom domain is configured by the [`CNAME`](CNAME) file.
+Served via **GitHub Pages** from the `main` branch (root) under the **LEVEL-JAUDE** GitHub account. The custom domain is configured by the [`CNAME`](CNAME) file.
 
 ### GoDaddy DNS (apex domain `effectsbylevel.com`)
 Point the domain at GitHub Pages with these records:
@@ -17,7 +17,7 @@ Point the domain at GitHub Pages with these records:
 | A | @ | 185.199.109.153 |
 | A | @ | 185.199.110.153 |
 | A | @ | 185.199.111.153 |
-| CNAME | www | feasterjamie-hash.github.io |
+| CNAME | www | level-jaude.github.io |
 
 After DNS propagates, enable **Enforce HTTPS** in the repo's Pages settings.
 
