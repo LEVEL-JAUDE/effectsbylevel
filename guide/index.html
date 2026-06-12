@@ -116,13 +116,11 @@
     }
     .chip[aria-pressed="true"] .swatch { transform: scale(1.25); }
 
-    /* Per-effect rating (real Judge.me numbers from the store) */
+    /* Aggregate rating across the LEVEL line (store Judge.me totals) */
     .rating { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; min-height: 26px; }
     .stars { color: var(--amber); font-size: 17px; letter-spacing: 1px; }
     .rating .score { font-weight: 700; color: var(--ink-strong); font-size: 14px; }
     .rating .count { font-size: 13px; color: var(--muted); }
-    .rating.swap { animation: ratingswap .35s ease; }
-    @keyframes ratingswap { 0% { opacity: 0; transform: translateY(4px); } 100% { opacity: 1; transform: none; } }
 
     /* Buttons */
     .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
@@ -240,10 +238,10 @@
         <button class="chip" type="button" data-effect="calm"   aria-pressed="false"><span class="swatch" style="--c: var(--periwinkle)"></span>Calm</button>
       </div>
 
-      <div class="rating" id="rating" aria-live="polite">
+      <div class="rating">
         <span class="stars" aria-hidden="true">★★★★★</span>
-        <span class="score" id="score"></span>
-        <span class="count" id="count"></span>
+        <span class="score">4.8/5</span>
+        <span class="count">· 300+ verified reviews</span>
       </div>
 
       <div class="ctas">
@@ -290,24 +288,19 @@
     const SHOP = 'https://levelexperience.shop';
     const UTM = 'utm_source=effectsbylevel&utm_medium=landing&utm_campaign=guide';
 
-    /* Ratings/counts are the store's real Judge.me numbers (June 2026). */
     const EFFECTS = [
       { key: 'sleep',  name: 'Sleep',  cssColor: 'var(--lightblue)',  hex: '#19bde8',
         img: CDN + 'LEVEL_Hemp_Sleep_Protab_tablets_1200x1200_2e1d8598-a030-4887-8aa7-cbe9f25dd021.jpg?width=900',
-        badge: 'Protab™ · Sleep',  url: SHOP + '/products/sleep-protab?'  + UTM + '&utm_content=sleep',
-        rating: '4.5', reviews: 57 },
+        badge: 'Protab™ · Sleep',  url: SHOP + '/products/sleep-protab?'  + UTM + '&utm_content=sleep' },
       { key: 'relief', name: 'Relief', cssColor: 'var(--teal)',       hex: '#2ed9c3',
         img: CDN + 'LEVEL_Hemp_Relief_Protab_tablets_1200x1200_ebbb8190-93ef-4c05-bd0d-72fa3cacd3e8.jpg?width=900',
-        badge: 'Protab™ · Relief', url: SHOP + '/products/relief-protab?' + UTM + '&utm_content=relief',
-        rating: '4.8', reviews: 40 },
+        badge: 'Protab™ · Relief', url: SHOP + '/products/relief-protab?' + UTM + '&utm_content=relief' },
       { key: 'relax',  name: 'Relax',  cssColor: 'var(--amber)',      hex: '#ffb548',
         img: CDN + 'LEVEL_Hemp_Relax_Protab_tablets_1200x1200_6847df8b-69ac-46a2-ba71-dbd26ed6ee00.jpg?width=900',
-        badge: 'Protab™ · Relax',  url: SHOP + '/products/relax-protab?'  + UTM + '&utm_content=relax',
-        rating: '4.8', reviews: 33 },
+        badge: 'Protab™ · Relax',  url: SHOP + '/products/relax-protab?'  + UTM + '&utm_content=relax' },
       { key: 'calm',   name: 'Calm',   cssColor: 'var(--periwinkle)', hex: '#8a84d6',
         img: CDN + 'LEVELHemp_CalmProtab_tablets.png?width=900',
-        badge: 'Tablingual™ · Calm', url: SHOP + '/products/calm-cbg-tablingual?' + UTM + '&utm_content=calm',
-        rating: '5.0', reviews: 6 }
+        badge: 'Tablingual™ · Calm', url: SHOP + '/products/calm-cbg-tablingual?' + UTM + '&utm_content=calm' }
     ];
 
     const stage = document.getElementById('stage');
@@ -339,12 +332,8 @@
       });
       document.getElementById('badgeDot').style.background = e.hex;
       document.getElementById('badgeText').textContent = e.badge;
-      document.getElementById('score').textContent = e.rating + '/5';
-      document.getElementById('count').textContent = '· ' + e.reviews + ' verified reviews';
       document.getElementById('shopCta').href = e.url;
       document.getElementById('ctaLabel').textContent = 'Shop ' + e.name;
-      const r = document.getElementById('rating');
-      r.classList.remove('swap'); void r.offsetWidth; r.classList.add('swap');
       if (fromUser) lock();
     }
 
