@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Effects by LEVEL — FEEL</title>
+  <meta name="description" content="Tiny tablets. Big effects. An interactive field of effects by LEVEL — pick Sleep, Relief, Relax, or Calm and feel exactly that." />
+
+  <!-- Social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Effects by LEVEL — FEEL" />
+  <meta property="og:description" content="Tiny tablets. Big effects. Pick your effect — Sleep · Relief · Relax · Calm." />
+  <meta property="og:url" content="https://effectsbylevel.com/new" />
+  <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVELHemp_CalmProtab_tablets.png?width=1200" />
+  <meta name="theme-color" content="#0a0c10" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='11' width='24' height='10' rx='5' fill='white'/%3E%3Cline x1='16' y1='12' x2='16' y2='20' stroke='%230a0c10' stroke-width='1.4'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0a0c10;
+      --ink: #f4f6fb;
+      --muted: #8b93a7;
+      --line: rgba(255,255,255,0.10);
+      /* LEVEL Pantone accents */
+      --teal: #2ed9c3; --amber: #ffb548; --lightblue: #19bde8;
+      --green: #81e77a; --coral: #f68d6c; --periwinkle: #8a84d6;
+      --red: #ff675d; --purple: #7473c0; --blue: #00a0df;
+      --accent: #19bde8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg); color: var(--ink); line-height: 1.6;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    ::selection { background: var(--accent); color: #06121f; }
+
+    /* ---------- Aurora canvas + grain ---------- */
+    #field { position: fixed; inset: 0; z-index: 0; display: block; }
+    .grain {
+      position: fixed; inset: -50%; z-index: 1; pointer-events: none; opacity: 0.5;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation: grain 8s steps(10) infinite;
+    }
+    @keyframes grain {
+      0%,100% { transform: translate(0,0); } 10% { transform: translate(-3%,2%); }
+      30% { transform: translate(2%,-3%); } 50% { transform: translate(-2%,3%); }
+      70% { transform: translate(3%,1%); } 90% { transform: translate(-1%,-2%); }
+    }
+
+    .wrap { position: relative; z-index: 2; }
+
+    /* ---------- Top bar ---------- */
+    .bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 20;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px clamp(18px, 4vw, 40px);
+      background: linear-gradient(180deg, rgba(10,12,16,0.75), transparent);
+    }
+    .bar img { height: 20px; width: auto; display: block; }
+    .pill21 {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px;
+      color: var(--muted); background: rgba(10,12,16,0.5); backdrop-filter: blur(8px);
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      min-height: 100svh; display: grid; place-items: center; text-align: center;
+      padding: 96px clamp(18px, 5vw, 48px) 110px; position: relative;
+    }
+    .hero-inner { max-width: 1100px; }
+    .eyebrow {
+      font-size: clamp(11px, 2vw, 13px); font-weight: 700;
+      letter-spacing: 0.5em; text-transform: uppercase; color: var(--muted);
+      padding-left: 0.5em; margin-bottom: 26px;
+    }
+    .feel {
+      font-weight: 900; line-height: 0.88; letter-spacing: -0.035em;
+      font-size: clamp(72px, 17vw, 200px); text-transform: uppercase;
+      color: transparent; -webkit-text-stroke: 2px rgba(244,246,251,0.9);
+    }
+    .word-window {
+      display: block; height: 1.02em; overflow: hidden; margin-top: 6px;
+      font-weight: 900; line-height: 1; letter-spacing: -0.035em;
+      font-size: clamp(72px, 17vw, 200px); text-transform: uppercase;
+    }
+    .word-track { display: block; transition: transform .65s cubic-bezier(.76,0,.18,1); will-change: transform; }
+    .word-track span {
+      display: block; height: 1.02em;
+      color: var(--c);
+      text-shadow: 0 0 45px color-mix(in srgb, var(--c) 35%, transparent);
+    }
+    .hero-sub {
+      margin: 34px auto 36px; max-width: 46ch;
+      font-size: clamp(16px, 2.4vw, 20px); color: var(--muted); font-weight: 500;
+    }
+    .hero-sub b { color: var(--ink); font-weight: 700; }
+
+    .hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 16px; font-weight: 700; letter-spacing: -0.01em; text-decoration: none;
+      padding: 17px 32px; border-radius: 14px; cursor: pointer;
+      transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s, background .25s, color .25s, border-color .25s;
+      will-change: transform;
+    }
+    .btn-glow {
+      background: var(--ink); color: #0a0c10; border: 0;
+      box-shadow: 0 0 0 0 transparent;
+    }
+    .btn-glow:hover {
+      box-shadow: 0 18px 60px -16px color-mix(in srgb, var(--accent) 80%, transparent),
+                  0 0 0 1px color-mix(in srgb, var(--accent) 60%, transparent);
+    }
+    .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+    .btn-ghost:hover { border-color: var(--ink); }
+
+    /* floating bottle */
+    .bottle {
+      position: absolute; right: clamp(0px, 6vw, 120px); bottom: 12vh;
+      width: clamp(120px, 16vw, 230px); pointer-events: none; z-index: 1;
+      filter: drop-shadow(0 30px 60px color-mix(in srgb, var(--accent) 35%, transparent));
+      animation: floaty 7s ease-in-out infinite;
+      transition: filter .8s;
+    }
+    @keyframes floaty {
+      0%,100% { transform: translateY(0) rotate(-6deg); }
+      50% { transform: translateY(-22px) rotate(3deg); }
+    }
+
+    .scroll-cue {
+      position: absolute; bottom: 64px; left: 50%; transform: translateX(-50%);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; padding-left: 0.3em;
+    }
+    .scroll-cue::after {
+      content: "↓"; display: block; text-align: center; font-size: 16px; margin-top: 6px;
+      animation: dip 1.8s ease-in-out infinite;
+    }
+    @keyframes dip { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+    /* ---------- Marquee ---------- */
+    .marquee {
+      position: absolute; bottom: 0; left: 0; right: 0; overflow: hidden;
+      border-top: 1px solid var(--line); padding: 14px 0;
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+    .marquee-track {
+      display: inline-block; white-space: nowrap;
+      animation: slide 26s linear infinite;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.34em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .marquee-track i { font-style: normal; color: var(--accent); transition: color .6s; }
+    @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ---------- Effects section ---------- */
+    .effects-sec { padding: clamp(80px, 12vh, 140px) clamp(18px, 5vw, 48px); max-width: 1280px; margin: 0 auto; }
+    .sec-head { text-align: center; margin-bottom: clamp(36px, 6vh, 64px); }
+    .sec-head h2 {
+      font-size: clamp(34px, 6vw, 64px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.04;
+    }
+    .sec-head h2 em { font-style: normal; color: var(--accent); transition: color .6s; }
+    .sec-head p { color: var(--muted); margin-top: 12px; font-size: clamp(14px, 2vw, 17px); }
+
+    .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(12px, 1.6vw, 22px); }
+    .card {
+      position: relative; display: block; text-decoration: none;
+      border-radius: 22px; padding: 18px 18px 22px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--line);
+      transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s, background .35s, box-shadow .35s;
+      will-change: transform;
+      opacity: 0; translate: 0 28px;
+    }
+    .card.in { opacity: 1; translate: 0 0; transition: opacity .7s ease, translate .7s cubic-bezier(.2,.7,.2,1), transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s, background .35s, box-shadow .35s; }
+    .card:nth-child(2) { transition-delay: .07s; } .card:nth-child(3) { transition-delay: .14s; } .card:nth-child(4) { transition-delay: .21s; }
+    .card:hover {
+      transform: translateY(-10px) scale(1.015);
+      border-color: color-mix(in srgb, var(--c) 65%, transparent);
+      background: color-mix(in srgb, var(--c) 7%, rgba(255,255,255,0.03));
+      box-shadow: 0 30px 80px -30px color-mix(in srgb, var(--c) 55%, transparent);
+    }
+    .card .tile {
+      border-radius: 14px; background: #fff; aspect-ratio: 1/1;
+      display: grid; place-items: center; overflow: hidden; margin-bottom: 16px;
+    }
+    .card .tile img { width: 88%; height: 88%; object-fit: contain; transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+    .card:hover .tile img { transform: scale(1.06) rotate(-1.5deg); }
+    .card h3 {
+      font-size: 21px; font-weight: 800; letter-spacing: -0.01em;
+      display: flex; align-items: center; gap: 9px;
+    }
+    .card h3 .d { width: 10px; height: 10px; border-radius: 50%; background: var(--c);
+      box-shadow: 0 0 14px color-mix(in srgb, var(--c) 80%, transparent); }
+    .card p { font-size: 13.5px; color: var(--muted); margin-top: 5px; }
+    .card .go {
+      margin-top: 13px; font-size: 14px; font-weight: 700; color: var(--c);
+      display: inline-flex; align-items: center; gap: 7px;
+    }
+    .card .go::after { content: "→"; transition: transform .25s; }
+    .card:hover .go::after { transform: translateX(4px); }
+
+    /* ---------- Proof / outro ---------- */
+    .proof {
+      text-align: center; padding: clamp(70px, 11vh, 130px) clamp(18px, 5vw, 48px) 90px;
+      border-top: 1px solid var(--line);
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.025));
+      position: relative;
+    }
+    .proof .stars { color: var(--amber); font-size: 26px; letter-spacing: 4px; text-shadow: 0 0 30px color-mix(in srgb, var(--amber) 50%, transparent); }
+    .proof .big {
+      font-size: clamp(38px, 7vw, 84px); font-weight: 900; letter-spacing: -0.03em; line-height: 1;
+      margin: 14px 0 6px;
+    }
+    .proof .sub { color: var(--muted); font-size: clamp(14px, 2vw, 17px); margin-bottom: 34px; }
+    .press-logos {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+      gap: clamp(26px, 5vw, 60px); margin: 0 auto 44px; max-width: 900px;
+    }
+    .press-logos img {
+      height: 30px; width: auto; opacity: 0.45;
+      filter: invert(1) grayscale(1) brightness(1.4);
+      transition: opacity .2s;
+    }
+    .press-logos img:hover { opacity: 0.9; }
+    .promo-line { margin-top: 22px; font-size: 13.5px; color: var(--muted); }
+    .promo-line b { color: var(--ink); }
+
+    footer {
+      border-top: 1px solid var(--line); padding: 22px; text-align: center;
+      font-size: 12.5px; color: var(--muted); letter-spacing: 0.02em; position: relative; z-index: 2;
+      background: rgba(10,12,16,0.6);
+    }
+    footer a { color: var(--ink); text-decoration: none; font-weight: 600; }
+    footer .sep { opacity: 0.4; margin: 0 8px; }
+
+    .reveal { opacity: 0; translate: 0 26px; transition: opacity .8s ease, translate .8s cubic-bezier(.2,.7,.2,1); }
+    .reveal.in { opacity: 1; translate: 0 0; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1020px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) {
+      .cards { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .card { padding: 12px 12px 16px; border-radius: 18px; }
+      .card h3 { font-size: 16px; }
+      .card p { font-size: 12px; }
+      .bottle { display: none; }
+      .hero { padding-bottom: 130px; }
+      .hero-ctas .btn { flex: 1 1 100%; justify-content: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .grain, .bottle, .scroll-cue::after, .marquee-track { animation: none !important; }
+      .word-track { transition: none !important; }
+      .card, .reveal { opacity: 1 !important; translate: 0 0 !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="bar">
+    <a href="https://levelexperience.shop/?utm_source=effectsbylevel&utm_medium=landing&utm_campaign=new" aria-label="LEVEL">
+      <img src="https://levelexperience.shop/cdn/shop/files/LEVEL_logo_vector_tm_large-white.png?height=40" alt="LEVEL" />
+    </a>
+    <span class="pill21">21+</span>
+  </div>
+
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">Effects by LEVEL</p>
+        <h1>
+          <span class="feel">Feel</span>
+          <span class="word-window" aria-live="polite">
+            <span class="word-track" id="wordTrack">
+              <span style="--c: var(--lightblue)">Sleep</span>
+              <span style="--c: var(--teal)">Relief</span>
+              <span style="--c: var(--amber)">Relax</span>
+              <span style="--c: var(--periwinkle)">Calm</span>
+              <span style="--c: var(--lightblue)">Sleep</span>
+            </span>
+          </span>
+        </h1>
+        <p class="hero-sub"><b>Tiny tablets. Big effects.</b> Precision-dosed and fast-acting — pick the feeling, get exactly that. Every single time.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-glow magnetic" href="https://levelexperience.shop/?utm_source=effectsbylevel&utm_medium=landing&utm_campaign=new">Shop the effects →</a>
+          <a class="btn btn-ghost magnetic" href="#effects">Pick your effect ↓</a>
+        </div>
+      </div>
+
+      <img class="bottle" src="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVELHemp_CalmProtab_tablets.png?width=600" alt="" />
+
+      <a class="scroll-cue" href="#effects">Scroll</a>
+      <div class="marquee" aria-hidden="true">
+        <span class="marquee-track" id="marq"></span>
+      </div>
+    </section>
+
+    <section class="effects-sec" id="effects">
+      <div class="sec-head reveal">
+        <h2>How do you want<br />to <em id="secAccent">feel</em>?</h2>
+        <p>Four effects. One tiny tablet each. Hover to feel the shift.</p>
+      </div>
+      <div class="cards">
+        <a class="card" style="--c: var(--lightblue)" data-effect="sleep"
+           href="https://levelexperience.shop/products/sleep-protab?utm_source=effectsbylevel&utm_medium=landing&utm_campaign=new&utm_content=sleep">
+          <span class="tile"><img src="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVEL_Hemp_Sleep_Protab_tablets_1200x1200_2e1d8598-a030-4887-8aa7-cbe9f25dd021.jpg?width=700" alt="LEVEL Sleep tablets" loading="lazy" /></span>
+          <h3><span class="d"></span>Sleep</h3>
+          <p>Power down. Stay down.</p>
+          <span class="go">Shop Sleep</span>
+        </a>
+        <a class="card" style="--c: var(--teal)" data-effect="relief"
+           href="https://levelexperience.shop/products/relief-protab?utm_source=effectsbylevel&utm_medium=landing&utm_campaign=new&utm_content=relief">
+          <span class="tile"><img src="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVEL_Hemp_Relief_Protab_tablets_1200x1200_ebbb8190-93ef-4c05-bd0d-72fa3cacd3e8.jpg?width=700" alt="LEVEL Relief tablets" loading="lazy" /></span>
+          <h3><span class="d"></span>Relief</h3>
+          <p>Ease what aches.</p>
+          <span class="go">Shop Relief</span>
+        </a>
+        <a class="card" style="--c: var(--amber)" data-effect="relax"
+           href="https://levelexperience.shop/products/relax-protab?utm_source=effectsbylevel&utm_medium=landing&utm_campaign=new&utm_content=relax">
+          <span class="tile"><img src="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVEL_Hemp_Relax_Protab_tablets_1200x1200_6847df8b-69ac-46a2-ba71-dbd26ed6ee00.jpg?width=700" alt="LEVEL Relax tablets" loading="lazy" /></span>
+          <h3><span class="d"></span>Relax</h3>
+          <p>Unwind on demand.</p>
+          <span class="go">Shop Relax</span>
+        </a>
+        <a class="card" style="--c: var(--periwinkle)" data-effect="calm"
+           href="https://levelexperience.shop/products/calm-cbg-tablingual?utm_source=effectsbylevel&utm_medium=landing&utm_campaign=new&utm_content=calm">
+          <span class="tile"><img src="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVELHemp_CalmProtab_tablets.png?width=700" alt="LEVEL Calm tablets" loading="lazy" /></span>
+          <h3><span class="d"></span>Calm</h3>
+          <p>Quiet the noise.</p>
+          <span class="go">Shop Calm</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="proof">
+      <div class="reveal">
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <div class="big">4.8/5</div>
+        <p class="sub">300+ verified reviews · Vegan · Gluten-free · Sugar-free · Lab tested</p>
+        <div class="press-logos">
+          <img src="https://levelexperience.shop/cdn/shop/files/1.png?height=120" alt="PBS" loading="lazy" />
+          <img src="https://levelexperience.shop/cdn/shop/files/2.png?height=120" alt="Wellness Magazine" loading="lazy" />
+          <img src="https://levelexperience.shop/cdn/shop/files/3_0c49c5fa-cfdd-419e-8e59-7f8c24428d2c.png?height=120" alt="Yahoo Finance" loading="lazy" />
+          <img src="https://levelexperience.shop/cdn/shop/files/4.png?height=120" alt="SFGATE" loading="lazy" />
+        </div>
+        <a class="btn btn-glow magnetic" href="https://levelexperience.shop/?utm_source=effectsbylevel&utm_medium=landing&utm_campaign=new&utm_term=outro">Find your level →</a>
+        <p class="promo-line"><b>20% off</b> your first order at levelexperience.shop</p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    &copy; <span id="yr">2026</span> LEVEL&trade;
+    <span class="sep">·</span> Plant-powered wellness
+    <span class="sep">·</span> Must be 21+
+    <span class="sep">·</span>
+    <a href="https://levelexperience.shop/?utm_source=effectsbylevel&utm_medium=footer&utm_campaign=new">levelexperience.shop</a>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---------- Palette ---------- */
+    const EFFECT_COLORS = {
+      sleep:  [25, 189, 232],   // lightblue
+      relief: [46, 217, 195],   // teal
+      relax:  [255, 181, 72],   // amber
+      calm:   [138, 132, 214]   // periwinkle
+    };
+    const ORDER = ['sleep', 'relief', 'relax', 'calm'];
+    const CSSC = { sleep: 'var(--lightblue)', relief: 'var(--teal)', relax: 'var(--amber)', calm: 'var(--periwinkle)' };
+
+    /* ---------- Marquee content ---------- */
+    const phrase = 'Tiny tablets <i>·</i> Big effects <i>·</i> Precision dosed <i>·</i> Fast acting <i>·</i> ';
+    document.getElementById('marq').innerHTML = phrase.repeat(6);
+
+    /* ---------- Rotating hero word + global accent ---------- */
+    const track = document.getElementById('wordTrack');
+    let wi = 0;
+    let tint = EFFECT_COLORS.sleep.slice();   // current canvas tint (lerped)
+    let tintTarget = EFFECT_COLORS.sleep.slice();
+
+    function setAccent(key) {
+      tintTarget = EFFECT_COLORS[key];
+      document.documentElement.style.setProperty('--accent', CSSC[key]);
+    }
+    if (!reduced) {
+      setInterval(() => {
+        wi++;
+        track.style.transform = 'translateY(-' + (wi * 1.02) + 'em)';
+        const key = ORDER[wi % 4];
+        setAccent(key);
+        if (wi === 4) setTimeout(() => {     // seamless loop reset
+          track.style.transition = 'none';
+          track.style.transform = 'translateY(0)';
+          void track.offsetHeight;
+          track.style.transition = '';
+          wi = 0;
+        }, 700);
+      }, 2600);
+    }
+
+    /* ---------- Card hover re-tints the whole scene ---------- */
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('pointerenter', () => setAccent(card.dataset.effect));
+    });
+
+    /* ---------- Magnetic buttons ---------- */
+    if (!reduced && matchMedia('(pointer: fine)').matches) {
+      document.querySelectorAll('.magnetic').forEach(btn => {
+        btn.addEventListener('pointermove', e => {
+          const r = btn.getBoundingClientRect();
+          const dx = e.clientX - (r.left + r.width / 2);
+          const dy = e.clientY - (r.top + r.height / 2);
+          btn.style.transform = 'translate(' + dx * 0.18 + 'px,' + dy * 0.22 + 'px)';
+        });
+        btn.addEventListener('pointerleave', () => { btn.style.transform = ''; });
+      });
+    }
+
+    /* ---------- Scroll reveals ---------- */
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { threshold: 0.18 });
+    document.querySelectorAll('.reveal, .card').forEach(el => io.observe(el));
+
+    /* ---------- Aurora field (pointer-reactive) ---------- */
+    const cv = document.getElementById('field');
+    const ctx = cv.getContext('2d');
+    let W, H, DPR;
+    function size() {
+      DPR = Math.min(devicePixelRatio || 1, 2);
+      W = cv.width = innerWidth * DPR;
+      H = cv.height = innerHeight * DPR;
+      cv.style.width = innerWidth + 'px';
+      cv.style.height = innerHeight + 'px';
+    }
+    size(); addEventListener('resize', size);
+
+    const BASE = [[46,217,195],[25,189,232],[138,132,214],[255,181,72],[0,160,223]];
+    const blobs = [];
+    for (let i = 0; i < 6; i++) {
+      blobs.push({
+        x: Math.random(), y: Math.random(),
+        vx: (Math.random() - 0.5) * 0.0009, vy: (Math.random() - 0.5) * 0.0009,
+        r: 0.22 + Math.random() * 0.16,
+        c: BASE[i % BASE.length],
+        tinted: i < 2            // first two blobs follow the live accent tint
+      });
+    }
+    let px = 0.5, py = 0.42, pActive = false;
+    addEventListener('pointermove', e => { px = e.clientX / innerWidth; py = e.clientY / innerHeight; pActive = true; }, { passive: true });
+
+    function frame() {
+      // lerp scene tint toward the active effect colour
+      for (let i = 0; i < 3; i++) tint[i] += (tintTarget[i] - tint[i]) * 0.045;
+
+      ctx.clearRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'lighter';
+      const R = Math.max(W, H);
+      blobs.forEach((b, i) => {
+        if (pActive) {                       // gentle attraction to the pointer
+          b.vx += (px - b.x) * 0.0000115;
+          b.vy += (py - b.y) * 0.0000115;
+        }
+        b.vx *= 0.997; b.vy *= 0.997;
+        b.x += b.vx; b.y += b.vy;
+        if (b.x < -0.25) b.x = 1.25; if (b.x > 1.25) b.x = -0.25;
+        if (b.y < -0.25) b.y = 1.25; if (b.y > 1.25) b.y = -0.25;
+        const col = b.tinted ? tint : b.c;
+        const g = ctx.createRadialGradient(b.x * W, b.y * H, 0, b.x * W, b.y * H, b.r * R);
+        g.addColorStop(0, 'rgba(' + (col[0]|0) + ',' + (col[1]|0) + ',' + (col[2]|0) + ',0.16)');
+        g.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(b.x * W, b.y * H, b.r * R, 0, 7);
+        ctx.fill();
+      });
+      raf = requestAnimationFrame(frame);
+    }
+    let raf = null;
+    function start() { if (!raf) raf = requestAnimationFrame(frame); }
+    function stop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+    if (reduced) { frame(); stop(); }       // single static frame
+    else {
+      start();
+      document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+    }
+  </script>
+</body>
+</html>
