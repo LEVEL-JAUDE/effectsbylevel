@@ -18,11 +18,18 @@
   <!-- Tablet/pill favicon, brand-aligned -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='11' width='24' height='10' rx='5' fill='%23282828'/%3E%3Cline x1='16' y1='12' x2='16' y2='20' stroke='white' stroke-width='1.4'/%3E%3C/svg%3E" />
 
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
+    /* LEVEL brand font — Akkurat, self-hosted on the store's Shopify CDN.
+       Weight ranges snap 500→Regular, 600/800→Bold so every rule hits a real cut. */
+    @font-face { font-family: 'Akkurat'; src: url('https://cdn.shopify.com/s/files/1/0900/9990/8889/files/Akkurat-Regular.woff2') format('woff2'); font-weight: 100 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Akkurat'; src: url('https://cdn.shopify.com/s/files/1/0900/9990/8889/files/Akkurat-Bold.woff2') format('woff2'); font-weight: 501 800; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Akkurat'; src: url('https://cdn.shopify.com/s/files/1/0900/9990/8889/files/Akkurat-Black.woff2') format('woff2'); font-weight: 801 900; font-style: normal; font-display: swap; }
+
     :root {
       /* Pulled from the live levelexperience.shop theme (Horizon) */
       --bg: #ffffff;
@@ -42,7 +49,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { -webkit-text-size-adjust: 100%; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Akkurat', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       color: var(--ink); background: var(--bg); line-height: 1.6;
       -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
       min-height: 100svh; display: flex; flex-direction: column;
