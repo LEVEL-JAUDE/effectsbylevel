@@ -3,7 +3,7 @@
 Landing page for **[effectsbylevel.com](https://effectsbylevel.com)** — a single-page funnel splash that drives visitors to the LEVEL Shopify store ([levelexperience.shop](https://levelexperience.shop)).
 
 ## What it is
-A self-contained, on-brand landing page (`index.html`, no build step) styled to match the live LEVEL store (Horizon theme): white background, Inter, near-black type, black 12px-radius buttons. It uses the real LEVEL logo and product photography, a **"Tiny Tablets. Big Effects."** hero, a Sleep → Relief → Relax crossfading product card (with a glow that matches each label color), the four effects (Sleep · Relief · Relax · Calm), a 4.8★ rating line, an **As seen in** press strip (PBS, Wellness, Yahoo Finance, SFGATE), and **Shop now** / **Take the Quiz** CTAs. All store links are UTM-tagged (`utm_source=effectsbylevel`) so the funnel is trackable in Shopify analytics.
+A self-contained, on-brand landing page (`index.html`, no build step) styled to match the live LEVEL store (Horizon theme): white background, Inter, near-black type, black 12px-radius buttons. It uses the real LEVEL logo and product photography, a **"Tiny Tablets. Big Effects."** hero, a Sleep → Relief → Relax crossfading product card (with a glow that matches each label color), the three effects (Sleep · Relief · Relax), a 4.8★ rating line, an **As seen in** press strip (PBS, Wellness, Yahoo Finance, SFGATE), and **Shop now** / **Take the Quiz** CTAs. All store links are UTM-tagged (`utm_source=effectsbylevel`) so the funnel is trackable in Shopify analytics.
 
 ## Pages
 - **`/`** ([index.html](index.html)) — the splash: "Tiny Tablets. Big Effects." hero with an auto-crossfading product card.

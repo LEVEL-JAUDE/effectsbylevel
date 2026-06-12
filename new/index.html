@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Effects by LEVEL — FEEL</title>
-  <meta name="description" content="Tiny tablets. Big effects. An interactive field of effects by LEVEL — pick Sleep, Relief, Relax, or Calm and feel exactly that." />
+  <meta name="description" content="Tiny tablets. Big effects. An interactive field of effects by LEVEL — pick Sleep, Relief, or Relax and feel exactly that." />
 
   <!-- Social sharing -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Effects by LEVEL — FEEL" />
-  <meta property="og:description" content="Tiny tablets. Big effects. Pick your effect — Sleep · Relief · Relax · Calm." />
+  <meta property="og:description" content="Tiny tablets. Big effects. Pick your effect — Sleep · Relief · Relax." />
   <meta property="og:url" content="https://effectsbylevel.com/new" />
-  <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVELHemp_CalmProtab_tablets.png?width=1200" />
+  <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVEL_Hemp_Sleep_Protab_tablets_1200x1200_2e1d8598-a030-4887-8aa7-cbe9f25dd021.jpg?width=1200" />
   <meta name="theme-color" content="#0a0c10" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -126,19 +126,6 @@
     .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
     .btn-ghost:hover { border-color: var(--ink); }
 
-    /* floating bottle */
-    .bottle {
-      position: absolute; right: clamp(0px, 6vw, 120px); bottom: 12vh;
-      width: clamp(120px, 16vw, 230px); pointer-events: none; z-index: 1;
-      filter: drop-shadow(0 30px 60px color-mix(in srgb, var(--accent) 35%, transparent));
-      animation: floaty 7s ease-in-out infinite;
-      transition: filter .8s;
-    }
-    @keyframes floaty {
-      0%,100% { transform: translateY(0) rotate(-6deg); }
-      50% { transform: translateY(-22px) rotate(3deg); }
-    }
-
     .scroll-cue {
       position: absolute; bottom: 64px; left: 50%; transform: translateX(-50%);
       font-size: 11px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;
@@ -174,7 +161,7 @@
     .sec-head h2 em { font-style: normal; color: var(--accent); transition: color .6s; }
     .sec-head p { color: var(--muted); margin-top: 12px; font-size: clamp(14px, 2vw, 17px); }
 
-    .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(12px, 1.6vw, 22px); }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 2vw, 26px); max-width: 1080px; margin: 0 auto; }
     .card {
       position: relative; display: block; text-decoration: none;
       border-radius: 22px; padding: 18px 18px 22px;
@@ -250,18 +237,16 @@
     .reveal.in { opacity: 1; translate: 0 0; }
 
     /* ---------- Responsive ---------- */
-    @media (max-width: 1020px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 860px) { .cards { grid-template-columns: 1fr; max-width: 420px; } }
     @media (max-width: 560px) {
-      .cards { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .card { padding: 12px 12px 16px; border-radius: 18px; }
-      .card h3 { font-size: 16px; }
-      .card p { font-size: 12px; }
-      .bottle { display: none; }
+      .card { padding: 14px 14px 18px; border-radius: 18px; }
+      .card h3 { font-size: 18px; }
+      .card p { font-size: 13px; }
       .hero { padding-bottom: 130px; }
       .hero-ctas .btn { flex: 1 1 100%; justify-content: center; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .grain, .bottle, .scroll-cue::after, .marquee-track { animation: none !important; }
+      .grain, .scroll-cue::after, .marquee-track { animation: none !important; }
       .word-track { transition: none !important; }
       .card, .reveal { opacity: 1 !important; translate: 0 0 !important; }
       html { scroll-behavior: auto; }
@@ -290,7 +275,6 @@
               <span style="--c: var(--lightblue)">Sleep</span>
               <span style="--c: var(--teal)">Relief</span>
               <span style="--c: var(--amber)">Relax</span>
-              <span style="--c: var(--periwinkle)">Calm</span>
               <span style="--c: var(--lightblue)">Sleep</span>
             </span>
           </span>
@@ -301,8 +285,6 @@
           <a class="btn btn-ghost magnetic" href="#effects">Pick your effect ↓</a>
         </div>
       </div>
-
-      <img class="bottle" src="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVELHemp_CalmProtab_tablets.png?width=600" alt="" />
 
       <a class="scroll-cue" href="#effects">Scroll</a>
       <div class="marquee" aria-hidden="true">
@@ -336,13 +318,6 @@
           <h3><span class="d"></span>Relax</h3>
           <p>Unwind on demand.</p>
           <span class="go">Shop Relax</span>
-        </a>
-        <a class="card" style="--c: var(--periwinkle)" data-effect="calm"
-           href="https://levelexperience.shop/products/calm-cbg-tablingual?utm_source=effectsbylevel&utm_medium=landing&utm_campaign=new&utm_content=calm">
-          <span class="tile"><img src="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVELHemp_CalmProtab_tablets.png?width=700" alt="LEVEL Calm tablets" loading="lazy" /></span>
-          <h3><span class="d"></span>Calm</h3>
-          <p>Quiet the noise.</p>
-          <span class="go">Shop Calm</span>
         </a>
       </div>
     </section>
@@ -380,11 +355,10 @@
     const EFFECT_COLORS = {
       sleep:  [25, 189, 232],   // lightblue
       relief: [46, 217, 195],   // teal
-      relax:  [255, 181, 72],   // amber
-      calm:   [138, 132, 214]   // periwinkle
+      relax:  [255, 181, 72]    // amber
     };
-    const ORDER = ['sleep', 'relief', 'relax', 'calm'];
-    const CSSC = { sleep: 'var(--lightblue)', relief: 'var(--teal)', relax: 'var(--amber)', calm: 'var(--periwinkle)' };
+    const ORDER = ['sleep', 'relief', 'relax'];
+    const CSSC = { sleep: 'var(--lightblue)', relief: 'var(--teal)', relax: 'var(--amber)' };
 
     /* ---------- Marquee content ---------- */
     const phrase = 'Tiny tablets <i>·</i> Big effects <i>·</i> Precision dosed <i>·</i> Fast acting <i>·</i> ';
@@ -404,9 +378,9 @@
       setInterval(() => {
         wi++;
         track.style.transform = 'translateY(-' + (wi * 1.02) + 'em)';
-        const key = ORDER[wi % 4];
+        const key = ORDER[wi % 3];
         setAccent(key);
-        if (wi === 4) setTimeout(() => {     // seamless loop reset
+        if (wi === 3) setTimeout(() => {     // seamless loop reset
           track.style.transition = 'none';
           track.style.transform = 'translateY(0)';
           void track.offsetHeight;
