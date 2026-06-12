@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Effects by LEVEL — What do you want to feel?</title>
+  <meta name="description" content="Pick an effect — Sleep, Relief, Relax, or Calm — and we'll match you to the exact LEVEL tablet built for it." />
+
+  <!-- Social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Effects by LEVEL — What do you want to feel?" />
+  <meta property="og:description" content="Pick an effect — Sleep, Relief, Relax, Calm — and get matched to the exact tablet built for it." />
+  <meta property="og:url" content="https://effectsbylevel.com/guide" />
+  <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVELHemp_CalmProtab_tablets.png?width=1200" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='11' width='24' height='10' rx='5' fill='%23282828'/%3E%3Cline x1='16' y1='12' x2='16' y2='20' stroke='white' stroke-width='1.4'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Preload all four product shots so picker swaps are instant -->
+  <link rel="preload" as="image" href="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVEL_Hemp_Sleep_Protab_tablets_1200x1200_2e1d8598-a030-4887-8aa7-cbe9f25dd021.jpg?width=900" />
+  <link rel="preload" as="image" href="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVEL_Hemp_Relief_Protab_tablets_1200x1200_ebbb8190-93ef-4c05-bd0d-72fa3cacd3e8.jpg?width=900" />
+  <link rel="preload" as="image" href="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVEL_Hemp_Relax_Protab_tablets_1200x1200_6847df8b-69ac-46a2-ba71-dbd26ed6ee00.jpg?width=900" />
+  <link rel="preload" as="image" href="https://cdn.shopify.com/s/files/1/0900/9990/8889/files/LEVELHemp_CalmProtab_tablets.png?width=900" />
+
+  <style>
+    :root {
+      /* Pulled from the live levelexperience.shop theme (Horizon) */
+      --bg: #ffffff;
+      --ink: #282828;
+      --ink-strong: #111111;
+      --muted: #6b6b6b;
+      --line: rgba(0,0,0,0.12);
+      --btn: #000000;
+      --btn-hover: #333333;
+      --radius-btn: 12px;
+      --radius-card: 28px;
+      /* LEVEL Pantone accents */
+      --teal: #2ed9c3; --amber: #ffb548; --lightblue: #19bde8;
+      --green: #81e77a; --coral: #f68d6c; --periwinkle: #8a84d6; --blue: #00a0df;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--ink); background: var(--bg); line-height: 1.6;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+      min-height: 100svh; display: flex; flex-direction: column;
+    }
+    a { color: inherit; }
+
+    /* ---------- Header ---------- */
+    header {
+      display: flex; align-items: center; justify-content: center;
+      height: 64px; border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(10px); z-index: 10;
+    }
+    .logo { height: 24px; width: auto; display: block; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      width: min(1120px, 92vw); margin: 0 auto;
+      display: grid; grid-template-columns: 1.02fr 0.98fr;
+      align-items: center; gap: clamp(24px, 5vw, 72px);
+      padding: clamp(28px, 5vh, 64px) 0 clamp(28px, 4vh, 48px);
+    }
+    .copy { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+    .promo {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; color: var(--ink); text-decoration: none;
+      padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line);
+      background: #fafafa; margin-bottom: 20px; transition: background .2s;
+    }
+    .promo:hover { background: #f1f1f1; }
+    .promo .dot { width: 7px; height: 7px; border-radius: 50%;
+      background: linear-gradient(120deg, var(--teal), var(--blue)); }
+
+    h1 {
+      font-weight: 700; font-size: clamp(38px, 5.8vw, 62px); line-height: 1.04;
+      letter-spacing: -0.025em; color: var(--ink-strong); margin-bottom: 16px;
+    }
+    h1 .accent { position: relative; white-space: nowrap; }
+    h1 .accent::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0.06em; height: 0.14em;
+      background: linear-gradient(90deg, var(--teal), var(--lightblue) 35%, var(--periwinkle) 70%, var(--amber));
+      border-radius: 4px; opacity: 0.9;
+    }
+
+    .subhead { font-size: clamp(16px, 2.2vw, 19px); color: var(--muted);
+      max-width: 44ch; margin-bottom: 24px; }
+
+    /* ---------- Effect picker ---------- */
+    .picker { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 9px;
+      font: inherit; font-size: 15px; font-weight: 600; color: var(--ink);
+      padding: 11px 20px; border-radius: 999px; cursor: pointer;
+      border: 1.5px solid var(--line); background: #fff;
+      transition: border-color .2s, background .2s, transform .15s, box-shadow .2s;
+    }
+    .chip .swatch { width: 10px; height: 10px; border-radius: 50%; background: var(--c);
+      transition: transform .2s; }
+    .chip:hover { transform: translateY(-1px); border-color: color-mix(in srgb, var(--c) 60%, var(--line)); }
+    .chip[aria-pressed="true"] {
+      border-color: var(--c);
+      background: color-mix(in srgb, var(--c) 10%, #ffffff);
+      box-shadow: 0 6px 18px -10px color-mix(in srgb, var(--c) 70%, transparent);
+    }
+    .chip[aria-pressed="true"] .swatch { transform: scale(1.25); }
+
+    /* Per-effect rating (real Judge.me numbers from the store) */
+    .rating { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; min-height: 26px; }
+    .stars { color: var(--amber); font-size: 17px; letter-spacing: 1px; }
+    .rating .score { font-weight: 700; color: var(--ink-strong); font-size: 14px; }
+    .rating .count { font-size: 13px; color: var(--muted); }
+    .rating.swap { animation: ratingswap .35s ease; }
+    @keyframes ratingswap { 0% { opacity: 0; transform: translateY(4px); } 100% { opacity: 1; transform: none; } }
+
+    /* Buttons */
+    .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      font-size: 16px; font-weight: 600; letter-spacing: -0.01em; text-decoration: none; cursor: pointer;
+      padding: 15px 30px; border-radius: var(--radius-btn);
+      transition: transform .2s cubic-bezier(.2,.7,.2,1), background .2s, box-shadow .2s, color .2s;
+    }
+    .btn-primary { background: var(--btn); color: #fff; border: 0; }
+    .btn-primary:hover { background: var(--btn-hover); transform: translateY(-2px);
+      box-shadow: 0 14px 30px -12px rgba(0,0,0,0.4); }
+    .btn-primary .arrow { transition: transform .2s; }
+    .btn-primary:hover .arrow { transform: translateX(3px); }
+    .btn-secondary { background: transparent; color: var(--ink-strong); border: 1px solid var(--ink-strong); }
+    .btn-secondary:hover { background: #fafafa; transform: translateY(-2px); }
+
+    .trust { font-size: 13px; color: var(--muted); }
+    .trust b { color: var(--ink); font-weight: 600; }
+
+    /* ---------- Product panel ---------- */
+    .product {
+      position: relative; aspect-ratio: 1 / 1;
+      background: #fff; border: 1px solid rgba(0,0,0,0.06);
+      border-radius: var(--radius-card);
+      box-shadow: 0 30px 60px -34px rgba(0,0,0,0.30);
+      display: grid; place-items: center;
+      animation: rise .9s cubic-bezier(.2,.7,.2,1) .08s both;
+    }
+    .aura { position: absolute; inset: -14%; z-index: -1; filter: blur(54px); border-radius: 44px; }
+    .aura .g { position: absolute; inset: 0; opacity: 0; transition: opacity .6s ease; }
+    .aura .g.active { opacity: 1; }
+
+    .stage { position: relative; width: 86%; aspect-ratio: 1 / 1; }
+    .slide {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
+      opacity: 0; transform: scale(0.99);
+      transition: opacity .45s ease, transform .45s ease;
+    }
+    .slide.active { opacity: 1; transform: scale(1); }
+
+    .badge {
+      position: absolute; bottom: 18px; left: 18px; white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; color: var(--ink);
+      background: rgba(255,255,255,0.9); backdrop-filter: blur(6px);
+      padding: 7px 13px; border-radius: 999px; border: 1px solid var(--line);
+      transition: opacity .3s;
+    }
+    .badge .d { width: 8px; height: 8px; border-radius: 50%; transition: background .3s; }
+
+    /* ---------- Press strip ---------- */
+    .press {
+      border-top: 1px solid var(--line); background: #fafafa;
+      padding: 24px 0 26px; text-align: center;
+    }
+    .press-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 16px;
+    }
+    .press-logos {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+      gap: clamp(22px, 5vw, 52px); width: min(900px, 90vw); margin: 0 auto;
+    }
+    .press-logos img {
+      height: 38px; width: auto; opacity: 0.6;
+      filter: grayscale(1); transition: opacity .2s, filter .2s;
+    }
+    .press-logos img:hover { opacity: 0.95; filter: grayscale(0); }
+
+    /* ---------- Footer ---------- */
+    footer {
+      border-top: 1px solid var(--line); padding: 20px 0; text-align: center;
+      font-size: 12.5px; color: var(--muted); letter-spacing: 0.02em;
+    }
+    footer a { color: var(--ink); text-decoration: none; font-weight: 500; }
+    footer a:hover { text-decoration: underline; }
+    footer .sep { opacity: 0.4; margin: 0 8px; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; text-align: center; padding: 24px 0 34px; gap: 30px; }
+      .promo, .ctas, .picker, .rating { justify-content: center; }
+      .subhead { margin-left: auto; margin-right: auto; }
+      .product { order: -1; max-width: 360px; margin: 0 auto; width: 100%; }
+      .ctas .btn { flex: 1 1 auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .copy, .product { animation: none !important; }
+      .slide, .aura .g, .rating.swap { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="https://levelexperience.shop/?utm_source=effectsbylevel&utm_medium=landing&utm_campaign=guide" aria-label="LEVEL">
+      <img class="logo" src="https://levelexperience.shop/cdn/shop/files/heading-logo.png?height=48" alt="LEVEL" height="24" />
+    </a>
+  </header>
+
+  <main class="hero">
+    <div class="copy">
+      <a class="promo" href="https://levelexperience.shop/?utm_source=effectsbylevel&utm_medium=promo&utm_campaign=guide-welcome20">
+        <span class="dot"></span> Get 20% off your first order
+      </a>
+
+      <h1>What do you want<br /><span class="accent">to feel?</span></h1>
+
+      <p class="subhead">Pick an effect. We'll match you to the precision-dosed tablet built for exactly that — clean and consistent, every time.</p>
+
+      <div class="picker" role="group" aria-label="Choose your effect">
+        <button class="chip" type="button" data-effect="sleep"  aria-pressed="false"><span class="swatch" style="--c: var(--lightblue)"></span>Sleep</button>
+        <button class="chip" type="button" data-effect="relief" aria-pressed="false"><span class="swatch" style="--c: var(--teal)"></span>Relief</button>
+        <button class="chip" type="button" data-effect="relax"  aria-pressed="false"><span class="swatch" style="--c: var(--amber)"></span>Relax</button>
+        <button class="chip" type="button" data-effect="calm"   aria-pressed="false"><span class="swatch" style="--c: var(--periwinkle)"></span>Calm</button>
+      </div>
+
+      <div class="rating" id="rating" aria-live="polite">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <span class="score" id="score"></span>
+        <span class="count" id="count"></span>
+      </div>
+
+      <div class="ctas">
+        <a class="btn btn-primary" id="shopCta" href="#">
+          <span id="ctaLabel">Shop now</span> <span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="btn btn-secondary" href="https://levelexperience.shop/pages/quiz?utm_source=effectsbylevel&utm_medium=landing&utm_campaign=guide-quiz">
+          Not sure? Take the Quiz
+        </a>
+      </div>
+
+      <p class="trust"><b>Vegan</b> · Gluten-free · Sugar-free · Third-party lab tested</p>
+    </div>
+
+    <div class="product">
+      <div class="aura" aria-hidden="true"></div>
+      <div class="stage" id="stage"></div>
+      <span class="badge" id="badge" aria-hidden="true"><span class="d" id="badgeDot"></span><span id="badgeText"></span></span>
+    </div>
+  </main>
+
+  <section class="press" aria-label="As seen in">
+    <p class="press-label">As seen in</p>
+    <div class="press-logos">
+      <img src="https://levelexperience.shop/cdn/shop/files/1.png?height=120" alt="PBS" loading="lazy" />
+      <img src="https://levelexperience.shop/cdn/shop/files/2.png?height=120" alt="Wellness Magazine" loading="lazy" />
+      <img src="https://levelexperience.shop/cdn/shop/files/3_0c49c5fa-cfdd-419e-8e59-7f8c24428d2c.png?height=120" alt="Yahoo Finance" loading="lazy" />
+      <img src="https://levelexperience.shop/cdn/shop/files/4.png?height=120" alt="SFGATE" loading="lazy" />
+    </div>
+  </section>
+
+  <footer>
+    &copy; <span id="yr">2026</span> LEVEL&trade;
+    <span class="sep">·</span> Plant-powered wellness
+    <span class="sep">·</span> Must be 21+
+    <span class="sep">·</span>
+    <a href="https://levelexperience.shop/?utm_source=effectsbylevel&utm_medium=footer&utm_campaign=guide">levelexperience.shop</a>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    const CDN = 'https://cdn.shopify.com/s/files/1/0900/9990/8889/files/';
+    const SHOP = 'https://levelexperience.shop';
+    const UTM = 'utm_source=effectsbylevel&utm_medium=landing&utm_campaign=guide';
+
+    /* Ratings/counts are the store's real Judge.me numbers (June 2026). */
+    const EFFECTS = [
+      { key: 'sleep',  name: 'Sleep',  cssColor: 'var(--lightblue)',  hex: '#19bde8',
+        img: CDN + 'LEVEL_Hemp_Sleep_Protab_tablets_1200x1200_2e1d8598-a030-4887-8aa7-cbe9f25dd021.jpg?width=900',
+        badge: 'Protab™ · Sleep',  url: SHOP + '/products/sleep-protab?'  + UTM + '&utm_content=sleep',
+        rating: '4.5', reviews: 57 },
+      { key: 'relief', name: 'Relief', cssColor: 'var(--teal)',       hex: '#2ed9c3',
+        img: CDN + 'LEVEL_Hemp_Relief_Protab_tablets_1200x1200_ebbb8190-93ef-4c05-bd0d-72fa3cacd3e8.jpg?width=900',
+        badge: 'Protab™ · Relief', url: SHOP + '/products/relief-protab?' + UTM + '&utm_content=relief',
+        rating: '4.8', reviews: 40 },
+      { key: 'relax',  name: 'Relax',  cssColor: 'var(--amber)',      hex: '#ffb548',
+        img: CDN + 'LEVEL_Hemp_Relax_Protab_tablets_1200x1200_6847df8b-69ac-46a2-ba71-dbd26ed6ee00.jpg?width=900',
+        badge: 'Protab™ · Relax',  url: SHOP + '/products/relax-protab?'  + UTM + '&utm_content=relax',
+        rating: '4.8', reviews: 33 },
+      { key: 'calm',   name: 'Calm',   cssColor: 'var(--periwinkle)', hex: '#8a84d6',
+        img: CDN + 'LEVELHemp_CalmProtab_tablets.png?width=900',
+        badge: 'Tablingual™ · Calm', url: SHOP + '/products/calm-cbg-tablingual?' + UTM + '&utm_content=calm',
+        rating: '5.0', reviews: 6 }
+    ];
+
+    const stage = document.getElementById('stage');
+    const aura = document.querySelector('.aura');
+    const chips = [...document.querySelectorAll('.chip')];
+
+    /* Build slides + aura layers once */
+    EFFECTS.forEach(e => {
+      const img = document.createElement('img');
+      img.className = 'slide'; img.id = 'slide-' + e.key;
+      img.src = e.img; img.alt = 'LEVEL ' + e.name + ' tablets';
+      stage.appendChild(img);
+      const g = document.createElement('div');
+      g.className = 'g'; g.id = 'g-' + e.key;
+      g.style.background = 'radial-gradient(circle at 50% 55%, ' + e.hex + ', transparent 68%)';
+      aura.appendChild(g);
+    });
+
+    let current = -1;
+    function select(idx, fromUser) {
+      if (idx === current) { if (fromUser) lock(); return; }
+      current = idx;
+      const e = EFFECTS[idx];
+      EFFECTS.forEach((x, i) => {
+        document.getElementById('slide-' + x.key).classList.toggle('active', i === idx);
+        document.getElementById('g-' + x.key).classList.toggle('active', i === idx);
+        chips[i].setAttribute('aria-pressed', i === idx ? 'true' : 'false');
+        chips[i].style.setProperty('--c', x.cssColor);
+      });
+      document.getElementById('badgeDot').style.background = e.hex;
+      document.getElementById('badgeText').textContent = e.badge;
+      document.getElementById('score').textContent = e.rating + '/5';
+      document.getElementById('count').textContent = '· ' + e.reviews + ' verified reviews';
+      document.getElementById('shopCta').href = e.url;
+      document.getElementById('ctaLabel').textContent = 'Shop ' + e.name;
+      const r = document.getElementById('rating');
+      r.classList.remove('swap'); void r.offsetWidth; r.classList.add('swap');
+      if (fromUser) lock();
+    }
+
+    /* Idle auto-tour cycles the effects until the visitor chooses */
+    let timer = null;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function lock() { if (timer) { clearInterval(timer); timer = null; } }
+    chips.forEach((c, i) => c.addEventListener('click', () => select(i, true)));
+
+    select(0, false);
+    if (!reduced) timer = setInterval(() => select((current + 1) % EFFECTS.length, false), 4200);
+  </script>
+</body>
+</html>
