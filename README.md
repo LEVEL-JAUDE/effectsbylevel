@@ -7,7 +7,7 @@ A self-contained, on-brand landing page (`index.html`, no build step) styled to 
 
 ## Pages
 - **`/`** ([index.html](index.html)) — the splash: "Tiny Tablets. Big Effects." hero with an auto-crossfading product card.
-- **`/guide`** ([guide/index.html](guide/index.html)) — the interactive variant: "What do you want to feel?" effect picker. Chips switch the product, aura color, real per-product Judge.me rating, and a deep-linked **Shop {Effect}** CTA (`utm_campaign=guide`, `utm_content=<effect>`), so the two pages are separable in analytics.
+- **`/guide`** ([guide/index.html](guide/index.html)) — the interactive variant: "How do you want to feel?" effect picker. Chips switch the product, aura color, real per-product Judge.me rating, and a deep-linked **Shop {Effect}** CTA (`utm_campaign=guide`, `utm_content=<effect>`), so the two pages are separable in analytics.
 
 ## Hosting
 Served via **GitHub Pages** from the `main` branch (root) under the **LEVEL-JAUDE** GitHub account. The custom domain is configured by the [`CNAME`](CNAME) file.
